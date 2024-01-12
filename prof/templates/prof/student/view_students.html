@@ -1,0 +1,39 @@
+{% extends 'prof/base/base.html' %}
+
+{% block title %}Students{% endblock title %}
+{% block navbar_title %}{{ prof.username }}{% endblock navbar_title %}
+{% block navitem_title %}Students{% endblock navitem_title %}
+
+{% block buttons %}
+    <a href="{% url 'prof:index' %}" class="btn btn-light">Home</a>
+{% endblock buttons %}
+
+{% block body %}
+
+<style>
+    .card-header {
+    background-color: lightskyblue
+}
+</style>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" style="color: aliceblue;">Students List</div>
+                    <div class="card-body">
+                        {% if students %}
+                            <ul class="list-group">
+                                {% for s in students %}
+                                    <li class="list-group-item">{{ s.username }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <h2 class="text-center">No students available</h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+
